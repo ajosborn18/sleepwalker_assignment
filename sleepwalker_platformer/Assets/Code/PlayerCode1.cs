@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PlayerCode : MonoBehaviour
+public class PlayerCode1 : MonoBehaviour
 {
     Rigidbody2D _rigidbody;
     // Animator _animator;
@@ -49,6 +49,11 @@ public class PlayerCode : MonoBehaviour
         if(grounded && Input.GetButtonDown("Jump"))
         {
             _rigidbody.AddForce(new Vector2(0, jump_force));
+            grounded = false;
+        }
+        if(_rigidbody.velocity.y == 0)
+        {
+            grounded = true;
         }
 
         if((xSpeed > 0 && transform.localScale.x < 0) || (xSpeed < 0 && transform.localScale.x > 0))
